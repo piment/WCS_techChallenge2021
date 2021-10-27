@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>The Royals Events</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <img
+          src="assets/rkc_logo_light.png"
+          alt="Logo of the royal kingdom of colchis"
+        />
+      </div>
+      <nav id="navbar">
+        <ul>
+          <li><a href="index.html" class="link">About</a></li>
+          <li><a href="royal_family.html" class="link">Royal Family</a></li>
+          <li><a href="royal_events.html" class="link">Royal Events</a></li>
+          <li><a href="contact.html" class="link">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="ticket" class="ticket-buy hidden">
+      <p>You can purchase ticket for this event :</p>
+      <p>
+        <span id="event-sport"></span> contest again
+        <span id="event-opponent"></span>
+      </p>
+      <p>
+        Hosted in <span id="event-host"></span> city on
+        <span id="event-date"></span>
+      </p>
+      <form action="#" id="ticket-form">
+        <div class="ticket-input">
+          <label for="ticket-number">Number of ticket to purchase</label>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="ticket-number"
+            name="ticket-number"
+          />
+        </div>
+        <div class="ticket-input">
+          <label for="ticket-name">Your name</label>
+          <input type="text" id="ticket-name" name="ticket-name" required />
+        </div>
+        <div class="ticket-input">
+          <label for="ticket-email">Your email</label>
+          <input type="email" id="ticket-email" name="ticket-email" required />
+        </div>
+        <input type="submit" value="purchase ticket" />
+      </form>
+    </div>
+    <main>
+      <section id="events">
+        <h1>
+          This is the list of all the futur sports contests
+        </h1>
+      </section>
+    </main>
+    <script src="script_events.js"></script>
+  </body>
+</html>

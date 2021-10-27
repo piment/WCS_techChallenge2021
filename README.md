@@ -1,5 +1,15 @@
-#Wild Code School Technical Challenge 2021
-##The Royal Kingdom of Colchis
+# Wild Code School(WCS) TechChallenge 2021
 
-This is a website made for the technical challenge of the Wild Code Scool(WCS).
-Date of creation : October 2021
+## The Royal Kingdom of Colchis
+
+
+
+This is a website made for the acceptance at the WCS in Toulouse.
+
+Date of creation : October, 2021
+
+---
+
+
+
+
