@@ -25,7 +25,7 @@ body {
   height: 100vh;
 }
 
-/* HEADER SECTION */
+/* HEADER */
 header {
   display: flex;
   background: linear-gradient(270deg, var(--dark-green), var(--background)),
@@ -54,12 +54,24 @@ header {
 #navbar ul li {
   letter-spacing: 0.1em;
 }
-/* END HEADER SECTION */
-/* MAIN SECTION */
+/* END HEADER */
+
+/* MAIN */
 main {
-  margin-top: 200px;
   text-align: center;
   height: 100%;
+  box-sizing: border-box;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 200px;
+  background: rgba(10,10,10,0.8);
+  border-left: 5px solid var(--dark-green);
+  border-right: 5px solid var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 h1 {
@@ -69,30 +81,40 @@ h1 {
 }
 
 #welcome {
+  margin: 0 auto;
+  padding: 0;
+  min-width: 100%;
+  border-top: 1px solid var(--dark-green);
+  border-bottom: 1px solid var(--dark-green);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 640px;
-  max-height: 426px;
-  margin: 50px auto;
-  padding: 0;
-  border: 1px solid var(--secondary);
-  box-shadow: 0 3px 5px rgba(200, 255, 0, 0.1);
+  background: url("assets/castle_entrance.jpg") center;
+  background-size: cover;
+  filter: saturate(60%);
 }
-#welcome img {
-  z-index: 1;
-  margin: 0;
-}
-#welcome h1 {
-  z-index: 2;
-  margin: 0;
+
+#welcome-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   justify-self: center;
-  align-self: center;
-  position: absolute;
+  color: var(--primary);
+  background: rgba(0,0,0,0.7);
+  min-width: 100%;
+  height: 100%;
 }
+
+#welcome i {
+  margin: 20px auto;
+}
+
 #message {
+  margin-top: 20px;
   padding: 20px;
+  align-self: center;
+  justify-self: flex-start;
 }
 
 #family {
@@ -150,63 +172,7 @@ h1 {
   background: var(--dark-green);
   padding: 20px 5px;
 }
-/* END MAIN SECTION */
-
-@media (min-width: 800px) {
-  #welcome {
-    width: 800px;
-    height: 500px;
-    margin-top: 50px;
-  }
-
-  h1 {
-    font-size: 1.6em;
-  }
-  #cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .card {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  #navbar ul {
-    display: flex;
-    flex-direction: column;
-    padding-left: 50px;
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 0.9em;
-  }
-
-  #welcome {
-    width: 100%;
-    height: 150px;
-    margin-top: 0;
-  }
-
-  main {
-    padding: 0;
-  }
-
-  #cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .card {
-    margin-bottom: 20px;
-  }
-}
+/* END MAIN */
 
 .events-table {
   margin: 0 auto 20px auto;
@@ -290,4 +256,59 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.bigger {
+  font-size: 3em;
+}
+
+@media (max-width: 600px) {
+  #navbar ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 0.9em;
+  }
+
+  #welcome {
+    width: 100%;
+    height: 150px;
+    margin-top: 0;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  #cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 800px) {
+
+  h1 {
+    font-size: 1.6em;
+  }
+  #cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
 }
