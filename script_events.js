@@ -303,3 +303,27 @@ document.getElementById("ticket-form").addEventListener("submit", (event) => {
   const ticketDiv = document.getElementById("ticket");
   ticketDiv.classList.add("hidden");
 });
+
+const url = "https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4380&s=2021-2022";
+
+async function getEventsFromApi(url) {
+  const response = await fetch(url);
+  const eventsResponse = await response.json();
+  let events = []
+  for (let event of eventsResponse.events) {
+      events.push({"home": event.strHomeTeam, "away": event.strAwayTeam, "date": event.dateEvent});
+  }
+  return events;
+}
+
+async function displayEventsOnPage() {
+  const events = await getEventsFromApi(url);
+  let teams = new Set();
+  for(let event of events){
+    teams.add(event.home);
+  }
+  const teamsList = [...teams].sort((a,b) => a > b ? 1 : -1);
+
+}
+
+displayEventsOnPage()

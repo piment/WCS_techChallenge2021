@@ -59,9 +59,9 @@ header {
 /* MAIN */
 main {
   text-align: center;
-  height: 100%;
   box-sizing: border-box;
   width: 80%;
+  min-height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 200px;
@@ -112,73 +112,27 @@ h1 {
 
 #message {
   margin-top: 20px;
-  padding: 20px;
+  margin-bottom: 100px;
+  padding: 10px;
   align-self: center;
   justify-self: flex-start;
 }
 
 #family {
   margin-bottom: 100px;
+  width: 100%;
 }
 
-#cards {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.card {
-  border: 2px solid var(--secondary);
-  display: flex;
-  flex-direction: column;
-  background: var(--dark-green);
-  box-shadow: none;
-  margin-bottom: 20px;
-  filter: saturate(0);
-}
-.card:hover,
-.card:active {
-  border: 2px solid var(--primary);
-  filter: saturate(100%);
-  box-shadow: 5px 0 10px var(--dark-green);
-}
-.member_name {
-  font-size: 1em;
-}
-
-.member_img {
-  width: 250px;
-  height: 380px;
-  align-self: flex-end;
-}
-
-.member_img:hover {
-  filter: saturate(100%);
-}
-
-.card:hover > .member-desc {
-  visibility: visible;
-}
-
-.member-desc {
-  display: block;
-  visibility: hidden;
-  max-width: 250px;
-  color: var(--primary);
-  position: absolute;
-  bottom: 0;
-  z-index: 2;
-  background: var(--dark-green);
-  padding: 20px 5px;
-}
 /* END MAIN */
 
 .events-table {
   margin: 0 auto 20px auto;
   border: 1px solid var(--secondary);
   border-spacing: 0;
-  width: 80vw;
+}
+
+.events-table:last-child {
+  margin-bottom: 100px;
 }
 
 .events-table caption {
@@ -262,6 +216,125 @@ h1 {
   font-size: 3em;
 }
 
+.info {
+  margin-top: 50px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background: var(--dark-green);
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+}
+
+.danger {
+  animation: 0.5s linear 0s infinite alternate danger;
+  margin:0 20px;
+}
+
+#danger-message {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@keyframes  danger {
+  0% {
+    color: white;
+  }
+  100% {
+    color: orangered;
+  }
+}
+
+/* CARDS ANIMATION */
+
+
+#cards {
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  border: 2px solid var(--secondary);
+  display: flex;
+  flex-direction: column;
+  background: rgb(10,10,10);
+  box-shadow: none;
+  margin-bottom: 20px;
+  width: 250px;
+  height: 380px;
+  overflow: hidden;
+}
+
+.card:hover,
+.card:active {
+  border: 2px solid var(--primary);
+  filter: saturate(100%);
+  box-shadow: 5px 0 10px var(--dark-green);
+}
+
+.member_name {
+  font-size: 1.2em;
+  display: none;
+}
+
+.member_img {
+  width: 250px;
+  min-height: 380px;
+  position: absolute;
+
+}
+
+.card_img_mvt {
+  animation: 0.5s linear 0s 1  forwards card_img_movement
+}
+
+.card:hover > .member-desc {
+  visibility: visible;
+}
+
+.member-desc {
+  display: block;
+  visibility: hidden;
+  width: 100%;
+  color: var(--primary);
+  z-index: 2;
+  padding: 20px 5px;
+  position: absolute;
+  bottom: 0;
+  line-height: 2em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@keyframes card_img_movement {
+  from {
+    width: 250px;
+    min-height: 380px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    filter: saturate(100%);
+    opacity: 100%;
+  }
+  to {
+    width: 400px;
+    min-height: 580px;
+    position: absolute;
+    left: -20px;
+    top: -50px;
+    filter: saturate(0%);
+    opacity: 30%;
+  }
+
+}
 @media (max-width: 600px) {
   #navbar ul {
     display: flex;
@@ -284,26 +357,19 @@ h1 {
     padding: 0;
   }
 
-  #cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
   .card {
     margin-bottom: 20px;
   }
 }
 
-@media (min-width: 800px) {
+@media (max-width: 1000px) {
 
   h1 {
     font-size: 1.6em;
   }
   #cards {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
   }
