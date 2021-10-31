@@ -191,6 +191,22 @@ h1 {
 .ticket {
   color: white;
 }
+#ticket-page {
+  background-color: #4e5b51;
+  border-radius: 5px;
+  padding: 10px 40px 20px 40px;
+  position: relative;
+}
+.cancel-icon {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.cancel-icon a {
+  color: white;
+  font-size: 1.5em;
+}
 
 .ticket-buy {
   z-index: 3;
@@ -251,8 +267,6 @@ footer {
 }
 
 /* CARDS ANIMATION */
-
-
 #cards {
   display: flex;
   flex-direction: row ;
@@ -335,6 +349,7 @@ footer {
   }
 
 }
+
 @media (max-width: 600px) {
   #navbar ul {
     display: flex;

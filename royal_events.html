@@ -35,42 +35,47 @@
       </nav>
     </header>
     <div id="ticket" class="ticket-buy hidden">
-      <p>You can purchase ticket for this event :</p>
-      <p>
-        <span id="event-sport"></span> contest again
-        <span id="event-opponent"></span>
-      </p>
-      <p>
-        Hosted in <span id="event-host"></span> city on
-        <span id="event-date"></span>
-      </p>
-      <form action="#" id="ticket-form">
-        <div class="ticket-input">
-          <label for="ticket-number">Number of ticket to purchase</label>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            id="ticket-number"
-            name="ticket-number"
-          />
-        </div>
-        <div class="ticket-input">
-          <label for="ticket-name">Your name</label>
-          <input type="text" id="ticket-name" name="ticket-name" required />
-        </div>
-        <div class="ticket-input">
-          <label for="ticket-email">Your email</label>
-          <input type="email" id="ticket-email" name="ticket-email" required />
-        </div>
-        <input type="submit" value="purchase ticket" />
-      </form>
+      <div id="ticket-page">
+        <span class="cancel-icon" id="cancel-icon"><a href="#"><i class="fas fa-window-close"></i></a></span>
+        <p>You can purchase ticket for this event :</p>
+        <p>
+         <span id="event-team"></span> again
+         <span id="event-adversary"></span> on 
+          <span id="event-date"></span>
+         <hr>
+        </p>
+        <form action="#" id="ticket-form">
+          <div class="ticket-input">
+            <label for="ticket-name">Your name</label>
+            <input type="text" id="ticket-name" name="ticket-name" required />
+          </div>
+          <div class="ticket-input">
+            <label for="ticket-email">Your email</label>
+            <input type="email" id="ticket-email" name="ticket-email" required />
+          </div>
+          <div class="ticket-input">
+            <label for="ticket-number">Number of ticket to purchase</label>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="ticket-number"
+              name="ticket-number"
+            />
+          </div>
+          <input type="submit" value="purchase ticket" />
+        </form>
+      </div>
+      <div id="ticket-message" class="hidden">Thank you for purchasing ticket for this event!</div>
     </div>
     <main>
       <section id="events">
         <h1>
           This is the list of all the futur sports contests
         </h1>
+        <p id="events-message">
+          Please wait while loading events data.
+        </p>
       </section>
     </main>
     <footer><a href="https://github.com/piment/WCS_techChallenge2021" class="link"><i class="fab fa-github"></i> R.MURA </a> - Wild Code School technical challenge 2021</footer>
