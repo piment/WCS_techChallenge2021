@@ -33,7 +33,7 @@ async function sortEventsByTeams(events) {
 async function getTeamDetails(teamId){
   const response = await fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${teamId}`);
   const teamDetails = await response.json();
-  const details = {"logo": teamDetails.teams[0].strTeamLogo, "site": teamDetails.teams[0].strWebsite, "stadium": teamDetails.teams[0].strStadiumThumb, "facebook": teamDetails.teams[0].strFacebook, "twitter": teamDetails.teams[0].strTwitter};
+  const details = {"name": teamDetails.teams[0].strTeam, "logo": teamDetails.teams[0].strTeamLogo, "site": teamDetails.teams[0].strWebsite, "stadium": teamDetails.teams[0].strStadiumThumb, "facebook": teamDetails.teams[0].strFacebook, "twitter": teamDetails.teams[0].strTwitter};
   return details;
 }
 //Make an API call to get the 100 past events => [{home, away, date, idHome}]
@@ -51,12 +51,12 @@ const createSportTableHTML = (team) => {
   let teamDiv = document.createElement("div");
   let divBanner = document.createElement("div");
   divBanner.setAttribute("class", "team-banner");
-  let divBannerHTML = `<img src="${team.details.logo}" class="teamLogo" /><div class="banner-info"><span class="team-name">${team.name}</span>`;
-  divBannerHTML += '<span class="social">';
-  team.details.facebook !== "" ? divBannerHTML += `<a href="http://${team.details.facebook}" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>` : "";
-  team.details.twitter !== "" ? divBannerHTML += `<a href="http://${team.details.twitter}" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>` : "";
-  divBannerHTML += "</span></div>";
-  divBanner.innerHTML = divBannerHTML;
+  //let divBannerHTML = `<img src="${team.details.logo}" class="teamLogo" /><div class="banner-info"><span class="team-name">${team.name}</span>`;
+  //divBannerHTML += '<span class="social">';
+  //team.details.facebook !== "" ? divBannerHTML += `<a href="http://${team.details.facebook}" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>` : "";
+  //team.details.twitter !== "" ? divBannerHTML += `<a href="http://${team.details.twitter}" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>` : "";
+  //divBannerHTML += "</span></div>";
+  //divBanner.innerHTML = divBannerHTML;
 
   let tableHTML = document.createElement("table");
   tableHTML.setAttribute("class", "events-table");
@@ -86,6 +86,29 @@ const createSportTableHTML = (team) => {
   teamDiv.appendChild(tableHTML);
   return teamDiv;
 };
+
+const createElementBanner = (elt, details) => {
+  let divBannerHTML = `<img src="${details.logo}" class="teamLogo" /><div class="banner-info"><span class="team-name">${details.name}</span>`;
+  divBannerHTML += '<span class="social">';
+  details.facebook !== "" ? divBannerHTML += `<a href="http://${details.facebook}" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>` : "";
+  details.twitter !== "" ? divBannerHTML += `<a href="http://${details.twitter}" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>` : "";
+  divBannerHTML += "</span></div>";
+  
+  elt.innerHTML = divBannerHTML;
+  return elt;
+}
+
+async function checkHTMLScrollPosition(elt) {
+  const screenHeight = window.innerHeight;
+  const eltTopPosition = elt.getBoundingClientRect().top;
+  
+    if(elt.getElementsByClassName("team-banner")[0].innerHTML === ""){
+      const eltId = elt.getElementsByTagName("table")[0].getAttribute("id");
+      const details = await getTeamDetails(eltId);
+      elt.insertBefore(createElementBanner(elt.getElementsByClassName("team-banner")[0], details), elt.getElementsByTagName("table")[0]);
+    }
+}
+
 //Display the HTMLElement for each team, and configure other properties => DOM Manipulation 
 async function displayEventsOnPage() {
   const url = "https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4380&s=2021-2022";
@@ -95,6 +118,12 @@ async function displayEventsOnPage() {
 
   for(let teamEvents of events){
     document.getElementById("events").appendChild(createSportTableHTML(teamEvents));
+  }
+  const elts = document.getElementById("events").children;
+  for(let elt of elts){
+    if(elt.getBoundingClientRect().top < window.innerHeight && elt.getBoundingClientRect().top > 0){
+      checkHTMLScrollPosition(elt);
+    }
   }
 
   const ticketLinks = document.getElementsByClassName("ticket");
@@ -141,5 +170,14 @@ async function displayEventsOnPage() {
   });
 }
 
+
+window.addEventListener("scroll", () => {
+  const elts = document.getElementById("events").children;
+  for(let elt of elts){
+    if(elt.getBoundingClientRect().top < window.innerHeight && elt.getBoundingClientRect().top > 0){
+      checkHTMLScrollPosition(elt);
+    }
+  }
+})
 //Call to the main function of the script
 displayEventsOnPage()
