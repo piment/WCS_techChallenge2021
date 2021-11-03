@@ -22,12 +22,13 @@ I try to implement more features to show skills I had at this time, like :
 ---
 
 ### Landing page
-
 This is a simple landing page, with some css animations.
+
 ---
 
 ### Family page
 This page is about the Royal Family. I choosed to display family members within cards like styled elements. Adding animation on cards with CSS.
+
 ---
 
 ### Events page
@@ -37,6 +38,7 @@ Then, I retrieve all the teams name and id, to sort the events by teams, with th
 For each team, I injected on the page a Table with the events informations.
 I added a link for each event to buy ticket (just simulating this functionnality).
 And to reduce the loading time, because I need to make an API call for each team to get its details, I create a function that load data only if the "team" table is displayed on screen, and then load details for each team when the user scroll the page.
+
 ---
 
 ### Contact page
