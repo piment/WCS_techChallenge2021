@@ -1,11 +1,12 @@
+//List of teams in "events" and make a list of all teams => [teamName_teamId]
 const getTeamsNames = (events) => {
   let teams = new Set();
   for(let event of events){
-    teams.add(event.home);
+    teams.add(`${event.home}_${event.idHome}`);
   }
   return [...teams].sort((a,b) => a > b ? 1: -1);
 }
-
+//Get the list of the events for a specific team => [{adversary, date}]
 const getEventsByTeam = (team, events) => {
   let teamEvents = [];
   for(let event of events) {
@@ -18,32 +19,49 @@ const getEventsByTeam = (team, events) => {
   }
   return teamEvents;
 }
-
-const sortEventsByTeams = (events) => {
+//Sort all the events by teams => [{name, id, events: [], details: []}]
+async function sortEventsByTeams(events) {
   let eventsByTeams = [];
   const teamsNames = getTeamsNames(events);
   for(let team of teamsNames){
-    eventsByTeams.push({"name": team, "events": getEventsByTeam(team, events)})
+    const details = await getTeamDetails(team.split("_")[1]);
+    eventsByTeams.push({"name": team.split("_")[0], "id": team.split("_")[1], "events": getEventsByTeam(team.split("_")[0], events), "details": details})
   }
   return eventsByTeams;
 }
-
+//Make an API call to get details of the specific team with it Id => {logo, site, stadium, facebook, twitter}
+async function getTeamDetails(teamId){
+  const response = await fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${teamId}`);
+  const teamDetails = await response.json();
+  const details = {"logo": teamDetails.teams[0].strTeamLogo, "site": teamDetails.teams[0].strWebsite, "stadium": teamDetails.teams[0].strStadiumThumb, "facebook": teamDetails.teams[0].strFacebook, "twitter": teamDetails.teams[0].strTwitter};
+  return details;
+}
+//Make an API call to get the 100 past events => [{home, away, date, idHome}]
 async function getEventsFromApi(url) {
   const response = await fetch(url);
   const eventsResponse = await response.json();
   let events = []
   for (let event of eventsResponse.events) {
-      events.push({"home": event.strHomeTeam, "away": event.strAwayTeam, "date": event.dateEvent});
+      events.push({"home": event.strHomeTeam, "away": event.strAwayTeam, "date": event.dateEvent, "idHome": event.idHomeTeam});
   }
   return sortEventsByTeams(events);
 }
-
+//Create a HTML Element to display to the page => HTMLElement
 const createSportTableHTML = (team) => {
+  let teamDiv = document.createElement("div");
+  let divBanner = document.createElement("div");
+  divBanner.setAttribute("class", "team-banner");
+  let divBannerHTML = `<img src="${team.details.logo}" class="teamLogo" /><div class="banner-info"><span class="team-name">${team.name}</span>`;
+  divBannerHTML += '<span class="social">';
+  team.details.facebook !== "" ? divBannerHTML += `<a href="http://${team.details.facebook}" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>` : "";
+  team.details.twitter !== "" ? divBannerHTML += `<a href="http://${team.details.twitter}" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>` : "";
+  divBannerHTML += "</span></div>";
+  divBanner.innerHTML = divBannerHTML;
+
   let tableHTML = document.createElement("table");
   tableHTML.setAttribute("class", "events-table");
-  tableHTML.setAttribute("id", team.name.replace(" ", "-").toLowerCase());
-  let tableCaption = document.createElement("caption");
-  tableCaption.innerHTML = `${team.name}`;
+  tableHTML.setAttribute("id", team.id);
+  
   let thead = document.createElement("thead");
   let tbody = document.createElement("tbody");
 
@@ -62,12 +80,13 @@ const createSportTableHTML = (team) => {
     ></a></td>`;
     tbody.appendChild(row);
   }
-  tableHTML.appendChild(tableCaption);
+  teamDiv.appendChild(divBanner);
   tableHTML.appendChild(thead);
   tableHTML.appendChild(tbody);
-  return tableHTML;
+  teamDiv.appendChild(tableHTML);
+  return teamDiv;
 };
-
+//Display the HTMLElement for each team, and configure other properties => DOM Manipulation 
 async function displayEventsOnPage() {
   const url = "https://www.thesportsdb.com/api/v1/json/1/eventsseason.php?id=4380&s=2021-2022";
   const events = await getEventsFromApi(url);
@@ -122,4 +141,5 @@ async function displayEventsOnPage() {
   });
 }
 
+//Call to the main function of the script
 displayEventsOnPage()
