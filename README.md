@@ -19,4 +19,18 @@ I try to implement more features to show skills I had at this time, like :
 - Manipulating the DOM
 - ...
 
+---
 
+## Landing page
+
+---
+
+## Family page
+
+---
+
+## Events page
+
+---
+
+## Contact page
