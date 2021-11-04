@@ -14,7 +14,7 @@ header {
 }
 
 #navbar {
-    flex-grow: 1;
+    width: 100%;
     align-self: center;
 
     ul {
@@ -22,6 +22,7 @@ header {
         padding: 0;
         display: flex;
         justify-content: space-around;
+        width: 100%;
         
         li {
             letter-spacing: 0.1em;
@@ -34,10 +35,7 @@ header {
 }
 
 @media (max-width: 900px) {
-    html {
-        padding: 0;
-        margin: 0;
-    }
+    
     header {
         text-align: center;
         display: inline;

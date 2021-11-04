@@ -6,10 +6,14 @@
 
 @import 'modules/colors';
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: $color_05;
     font-family: "Open Sans Condensed", sans-serif;
     font-size: 1.3em;
     background: radial-gradient(circle at top,
@@ -19,19 +23,18 @@ body {
             rgba(0, 0, 0, 0) 60%,
             rgba(100, 250, 0, 0.5) 100%),
         url("/assets/img/hockey.jpg");
-    background-repeat: no-repeat;
     background-position: bottom center;
     background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     color: $color_04;
+    max-width: 100%;
 }
 
 main {
     text-align: center;
-    box-sizing: border-box;
-    width: 1000px;
-    min-height: 100%;
+    width: 900px;
+    min-height: 75vh;
     margin-left: auto;
     margin-right: auto;
     padding-top: 180px;
@@ -40,8 +43,10 @@ main {
     border-right: 2px solid $color_01;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: start;
     align-items: center;
+    padding-bottom: 50px;
+    
 }
 
 h1 {
@@ -102,6 +107,26 @@ footer {
     position: fixed;
     bottom: 0;
     z-index: 3;
+}
+
+
+
+/* END MAIN */
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 .link {
@@ -207,9 +232,7 @@ footer {
         margin: 0;
         padding: 0;
         font-family: "Open Sans Condensed", sans-serif;
-        
         color: $color_04;
-        height: 100%;
         width: 100vw;        
     }
     
