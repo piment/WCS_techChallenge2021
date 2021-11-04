@@ -50,13 +50,11 @@
 }
 
 .card:hover>.member-desc {
-    visibility: visible;
     display: block;
 }
 
 .member-desc {
     display: none;
-    visibility: hidden;
     width: 250px;
     color: $color_04;
     z-index: 2;
@@ -116,7 +114,6 @@
         display: block;
     }
     .member-desc {
-        visibility: visible;
         display: block;
         position: relative;
         color: $color_04;
