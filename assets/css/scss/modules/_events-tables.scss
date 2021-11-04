@@ -1,0 +1,81 @@
+@import 'colors';
+
+// EVENT TABLE SECTION
+.events-table {
+    margin: 0 auto 20px auto;
+    border: 1px solid $color_02;
+    border-spacing: 0;
+    width: 100%;
+
+    &:last-child {
+        margin-bottom: 50px;
+    }
+
+    thead {
+        background: $color_01;
+    }
+
+    tr td,
+    tr th {
+        border-bottom: 1px solid $color_02;
+        padding: 2px 15px;
+    }
+
+    tbody tr:nth-child(even) {
+        background: $color_01;
+        filter: saturate(50%);
+    }
+
+    tbody tr:nth-child(odd) {
+        background: $color_02;
+        filter: saturate(45%);
+    }
+}
+
+.team-banner {
+    font-style: italic;
+    background: rgba(27, 41, 28, 0.6);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-self: flex-start;
+    border-radius: 5px 5px 0 0;
+}
+
+.teamLogo {
+    width: 150px;
+    align-self: center;
+    margin: 20px;
+}
+
+.banner-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.social {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.social a {
+    color: white;
+}
+
+@media (max-width: 900px) {
+    .events-table {
+        font-size: 0.8em;
+        width: 100vw;
+        border: none;
+    }
+
+    .team-banner {
+        border-radius: 0;
+    }
+}

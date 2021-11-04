@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact the kingdom of Colchis</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/css/main.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,18 +21,21 @@
     <header>
       <div id="logo">
         <img
-          src="assets/rkc_logo_light.png"
+          src="assets/img/rkc_logo_light.png"
           alt="Logo of the royal kingdom of colchis"
         />
       </div>
       <nav id="navbar">
-        <ul>
+        <ul id="menu">
           <li><i class="fab fa-fort-awesome"></i> <a href="index.html" class="link">The Kingdom</a>
           </li>
           <li><i class="fas fa-crown"></i> <a href="royal_family.html" class="link">Royal Family</a></li>
           <li><i class="fas fa-calendar-alt"></i> <a href="royal_events.html" class="link">Royal Events</a></li>
           <li><i class="fas fa-envelope"></i> <a href="contact.html" class="link">Contact Us</a></li>
         </ul>
+        <div id="burger-menu">
+          <i class="fas fa-bars" onclick="displayMenu(this)"></i>
+        </div>
       </nav>
     </header>
     <main>
@@ -74,5 +78,6 @@
 
     <footer><a href="https://github.com/piment/WCS_techChallenge2021" class="link" target="_blank"><i class="fab fa-github"></i> R.MURA </a> - Wild Code School technical challenge 2021</footer>
     <script src="script_contact.js"></script>
+    <script src="script_menu.js"></script>
   </body>
 </html>
