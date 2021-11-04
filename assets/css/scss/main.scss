@@ -92,7 +92,6 @@ i {
 
 #message {
     margin-top: 20px;
-    margin-bottom: 100px;
     padding: 10px;
     align-self: center;
     justify-self: flex-start;
@@ -109,24 +108,20 @@ footer {
     z-index: 3;
 }
 
-
-
-/* END MAIN */
-
 #contact-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
 .input {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 300px;
     margin-bottom: 20px;
+    padding-bottom: 0;
 }
 
 .link {
@@ -190,8 +185,6 @@ footer {
 .info {
     margin-top: 50px;
 }
-
-
 
 .danger {
     animation: 0.5s linear 0s infinite alternate danger;
