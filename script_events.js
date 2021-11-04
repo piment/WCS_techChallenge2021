@@ -131,7 +131,6 @@ async function displayEventsOnPage() {
     ticket.addEventListener("click", (event) => {
       event.preventDefault();
 
-      //const team = event.target.closest("table").getElementsByClassName("team-name")[0].innerHTML;
       const team = event.target.closest("div").getElementsByClassName("team-name")[0].innerHTML;
       const parent = event.target.closest("tr");
       const adversary = parent.getElementsByClassName("adversary")[0].innerHTML;
