@@ -95,6 +95,9 @@ i {
     padding: 10px;
     align-self: center;
     justify-self: flex-start;
+    width: 90%;
+    max-width: 90%;
+    min-height: 200px;
 }
 
 footer {
@@ -122,6 +125,7 @@ footer {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 0;
+    width: 100%;
 }
 
 #submit {
