@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/modules.xml
+/vcs.xml
+/wcs_techChallenge_2021_R-MURA.iml
+
+# Editor-based HTTP Client requests
+/httpRequests/
