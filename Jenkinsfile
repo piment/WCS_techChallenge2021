@@ -4,10 +4,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'whoami'
-                sh 'cp index.html /var/www/testSiteWithJenkins'
-                dir('/var/www/testSiteWithJenkins') {
+                sh 'cp index.html /home/debian/testSiteWithJenkins'
+                dir('/home/debian/testSiteWithJenkins') {
                     sh 'ls -lha'
                 }
+                sh'ls -lha'
             }
         }
     }
