@@ -12,9 +12,9 @@ pipeline {
 
         stage('Test') {
           steps {
-            echo 'Starting Test Stage'
+            echo 'Starting Test Stage 2'
             dir(path: '/home/debian') {
-              sh '''ls -lha'
+              sh '''ls -lha\'
 '''
             }
 
