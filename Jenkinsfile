@@ -8,7 +8,6 @@ pipeline {
                 dir('/var/www/testSiteWithJenkins') {
                     sh 'ls -lha'
                 }
-                sh 'ls -lah'
             }
         }
     }
