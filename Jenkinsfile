@@ -14,7 +14,7 @@ pipeline {
           steps {
             echo 'Starting Test Stage'
             dir(path: '/home/debian') {
-              sh '''cd \'/home/debian\'
+              sh '''ls -lha'
 '''
             }
 
