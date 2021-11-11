@@ -4,7 +4,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'whoami'
-                sh 'mkdir /var/www/testSiteWithJenkins'
                 sh 'cp index.html /var/www/testSiteWithJenkins'
                 dir('/var/www/testSiteWithJenkins') {
                     sh 'ls -lha'
